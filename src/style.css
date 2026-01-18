@@ -1,0 +1,438 @@
+@import "tailwindcss";
+
+/* ======================================
+   STARTOWER FLOW - MODERN BENTO + NEUBRUTALISM DESIGN
+   Style: Bento Grids (Apple/Linear) + Neubrutalism accents
+   Colors: Off-white #F5F5F7, Pop Yellow #FFDE59, Mint #76E0C2
+   ====================================== */
+
+@theme {
+  /* Base Colors - Apple Bento Style */
+  --color-background: #F5F5F7;
+  --color-foreground: #1D1D1F;
+  --color-card: #FFFFFF;
+  --color-card-foreground: #1D1D1F;
+  --color-popover: #FFFFFF;
+  --color-popover-foreground: #1D1D1F;
+
+  /* Primary - Vibrant Purple/Violet */
+  --color-primary: #7C3AED;
+  --color-primary-foreground: #FFFFFF;
+
+  /* Secondary - Soft Grey */
+  --color-secondary: #F0F0F5;
+  --color-secondary-foreground: #1D1D1F;
+
+  /* Muted */
+  --color-muted: #E8E8ED;
+  --color-muted-foreground: #6E6E73;
+
+  /* Accent - Pop Yellow (Neubrutalism) */
+  --color-accent: #FFDE59;
+  --color-accent-foreground: #1D1D1F;
+
+  /* Destructive */
+  --color-destructive: #FF5757;
+  --color-destructive-foreground: #FFFFFF;
+
+  /* Borders */
+  --color-border: #E5E5EA;
+  --color-input: #E5E5EA;
+  --color-ring: #7C3AED;
+
+  /* Special Colors - Neubrutalism Accents */
+  --color-pop-yellow: #FFDE59;
+  --color-pop-mint: #76E0C2;
+  --color-pop-lavender: #CBA6F7;
+  --color-pop-coral: #FF7F7F;
+  --color-pop-sky: #7DD3FC;
+
+  /* Radius - Bento Style */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+}
+
+/* Dark Mode */
+.dark {
+  --color-background: #0A0A0B;
+  --color-foreground: #F5F5F7;
+  --color-card: #141417;
+  --color-card-foreground: #F5F5F7;
+  --color-popover: #141417;
+  --color-popover-foreground: #F5F5F7;
+  --color-primary: #A78BFA;
+  --color-primary-foreground: #1D1D1F;
+  --color-secondary: #1C1C1F;
+  --color-secondary-foreground: #F5F5F7;
+  --color-muted: #27272A;
+  --color-muted-foreground: #A1A1AA;
+  --color-border: #27272A;
+  --color-input: #27272A;
+  --color-ring: #A78BFA;
+}
+
+/* ====== BASE STYLES ====== */
+* {
+  border-color: var(--color-border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+/* ====== BENTO CARD STYLES ====== */
+.bento-card {
+  background: var(--color-card);
+  border-radius: 20px;
+  border: 1px solid var(--color-border);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.03),
+    0 2px 4px rgba(0, 0, 0, 0.02),
+    0 12px 24px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bento-card:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.04),
+    0 4px 8px rgba(0, 0, 0, 0.04),
+    0 24px 48px rgba(0, 0, 0, 0.06);
+}
+
+/* ====== NEUBRUTALISM CARDS ====== */
+.neubrutalism-card {
+  background: var(--color-card);
+  border-radius: 16px;
+  border: 3px solid var(--color-foreground);
+  box-shadow: 6px 6px 0 var(--color-foreground);
+  transition: all 0.15s ease;
+}
+
+.neubrutalism-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 var(--color-foreground);
+}
+
+.neubrutalism-card:active {
+  transform: translate(2px, 2px);
+  box-shadow: 4px 4px 0 var(--color-foreground);
+}
+
+/* Static version without hover animation - for forms/modals */
+.neubrutalism-card-static {
+  background: var(--color-card);
+  border-radius: 16px;
+  border: 3px solid var(--color-foreground);
+  box-shadow: 6px 6px 0 var(--color-foreground);
+}
+
+/* Colored Neubrutalism variants */
+.neubrutalism-yellow {
+  background: var(--color-pop-yellow);
+  border-color: var(--color-foreground);
+  box-shadow: 6px 6px 0 var(--color-foreground);
+}
+
+.neubrutalism-mint {
+  background: var(--color-pop-mint);
+  border-color: var(--color-foreground);
+  box-shadow: 6px 6px 0 var(--color-foreground);
+}
+
+.neubrutalism-lavender {
+  background: var(--color-pop-lavender);
+  border-color: var(--color-foreground);
+  box-shadow: 6px 6px 0 var(--color-foreground);
+}
+
+/* ====== MODERN BUTTON STYLES ====== */
+.btn-primary {
+  background: linear-gradient(135deg, #7C3AED 0%, #9333EA 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  padding: 12px 24px;
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.35);
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.45);
+}
+
+.btn-neubrutalism {
+  background: var(--color-pop-yellow);
+  color: var(--color-foreground);
+  border: 3px solid var(--color-foreground);
+  border-radius: 12px;
+  font-weight: 700;
+  padding: 12px 24px;
+  box-shadow: 4px 4px 0 var(--color-foreground);
+  transition: all 0.1s ease;
+}
+
+.btn-neubrutalism:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--color-foreground);
+}
+
+.btn-neubrutalism:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--color-foreground);
+}
+
+/* ====== STATUS BADGES ====== */
+.status-pending {
+  background: #F0F0F5;
+  color: #6E6E73;
+  border: 2px solid #E5E5EA;
+}
+
+.status-in-progress {
+  background: #DBEAFE;
+  color: #1D4ED8;
+  border: 2px solid #93C5FD;
+}
+
+.status-completed {
+  background: #D1FAE5;
+  color: #059669;
+  border: 2px solid #6EE7B7;
+}
+
+.status-on-hold {
+  background: #FEF3C7;
+  color: #D97706;
+  border: 2px solid #FCD34D;
+}
+
+/* ====== PRIORITY BADGES ====== */
+.priority-low {
+  background: #F0F0F5;
+  color: #6E6E73;
+}
+
+.priority-medium {
+  background: #FFDE59;
+  color: #1D1D1F;
+  font-weight: 700;
+}
+
+.priority-high {
+  background: #FF7F7F;
+  color: #1D1D1F;
+  font-weight: 700;
+}
+
+.priority-urgent {
+  background: linear-gradient(135deg, #7C3AED 0%, #EC4899 100%);
+  color: white;
+  font-weight: 700;
+  animation: pulse-glow 2s infinite;
+}
+
+/* ====== ANIMATIONS ====== */
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 0 8px rgba(124, 58, 237, 0);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(-3deg);
+  }
+
+  75% {
+    transform: rotate(3deg);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-shake-hover:hover {
+  animation: shake 0.3s ease-in-out;
+}
+
+/* ====== PROGRESS BAR ====== */
+.progress-bar {
+  height: 12px;
+  border-radius: 6px;
+  background: var(--color-muted);
+  overflow: hidden;
+  border: 2px solid var(--color-foreground);
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-pop-mint) 0%, var(--color-primary) 100%);
+  border-radius: 4px;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ====== CUSTOM SCROLLBAR ====== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted-foreground);
+}
+
+/* ====== SELECTION ====== */
+::selection {
+  background: var(--color-pop-yellow);
+  color: var(--color-foreground);
+}
+
+/* ====== DECORATIVE ELEMENTS ====== */
+.dot-pattern {
+  background-image: radial-gradient(circle, var(--color-muted) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.gradient-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* ====== EMOJI BACKGROUND ====== */
+.emoji-bg::before {
+  content: '✨🚀⭐💫';
+  position: absolute;
+  font-size: 120px;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ====== DATE PICKER STYLING ====== */
+input[type="datetime-local"],
+input[type="date"],
+input[type="time"] {
+  position: relative;
+  color-scheme: light;
+}
+
+.dark input[type="datetime-local"],
+.dark input[type="date"],
+.dark input[type="time"] {
+  color-scheme: dark;
+}
+
+/* Webkit date picker styling */
+input[type="datetime-local"]::-webkit-calendar-picker-indicator,
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  padding: 4px;
+  margin-right: -8px;
+  border-radius: 4px;
+  background-color: var(--color-pop-yellow);
+  border: 2px solid var(--color-foreground);
+  transition: all 0.15s ease;
+}
+
+input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover,
+input[type="date"]::-webkit-calendar-picker-indicator:hover,
+input[type="time"]::-webkit-calendar-picker-indicator:hover {
+  background-color: var(--color-pop-mint);
+  transform: scale(1.1);
+}
+
+/* Firefox date picker */
+input[type="datetime-local"]::-moz-calendar-picker-indicator,
+input[type="date"]::-moz-calendar-picker-indicator,
+input[type="time"]::-moz-calendar-picker-indicator {
+  cursor: pointer;
+}
+
+/* Date picker popup (limited browser support) */
+::-webkit-datetime-edit {
+  font-weight: 500;
+}
+
+::-webkit-datetime-edit-fields-wrapper {
+  padding: 0;
+}
+
+::-webkit-datetime-edit-text {
+  color: var(--color-muted-foreground);
+  padding: 0 0.2em;
+}
+
+::-webkit-datetime-edit-month-field,
+::-webkit-datetime-edit-day-field,
+::-webkit-datetime-edit-year-field,
+::-webkit-datetime-edit-hour-field,
+::-webkit-datetime-edit-minute-field,
+::-webkit-datetime-edit-ampm-field {
+  font-weight: 600;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+::-webkit-datetime-edit-month-field:focus,
+::-webkit-datetime-edit-day-field:focus,
+::-webkit-datetime-edit-year-field:focus,
+::-webkit-datetime-edit-hour-field:focus,
+::-webkit-datetime-edit-minute-field:focus,
+::-webkit-datetime-edit-ampm-field:focus {
+  background-color: var(--color-pop-yellow);
+  outline: none;
+}
